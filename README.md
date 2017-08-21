@@ -1,4 +1,4 @@
-# rpi-supercronic
+# rpi-supercronic [![Build Status](https://travis-ci.org/fruitarmy/rpi-supercronic.svg?branch=master)](https://travis-ci.org/fruitarmy/rpi-supercronic)
 
 This aims to dockerize [supercronic](https://github.com/aptible/supercronic) for the ARM based [Raspberry Pi](https://raspberrypi.org)
 
