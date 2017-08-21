@@ -1,7 +1,7 @@
 FROM hypriot/rpi-alpine-scratch
 
-RUN apk update && \
-  apk add curl
+RUN apk update
+RUN apk add curl
 
 ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.2/supercronic-linux-arm \
   SUPERCRONIC=supercronic-linux-arm \
