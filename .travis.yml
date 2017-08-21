@@ -1,0 +1,20 @@
+sudo: required
+
+language: bash
+
+services:
+- docker
+
+before_install:
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+- docker build -t fruitarmy/rpi-supercronic .
+
+script:
+- ./test.sh
+
+after_success:
+- if [ -n "$TRAVIS_TAG" ]; then
+  docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  docker tag fruitarmy/rpi-supercronic fruitarmy/rpi-supercronic:$TRAVIS_TAG
+  docker push fruitarmy/rpi-supercronic:$TRAVIS_TAG;
+  fi
