@@ -1,4 +1,7 @@
-FROM hypriot/rpi-alpine-scratch
+FROM cmosh/alpine-arm
+
+RUN [ "cross-build-start" ]
+
 RUN apk update && \
   apk add curl
 
@@ -12,5 +15,7 @@ RUN curl -fsSLO "$SUPERCRONIC_URL" \
   && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
   
 ADD crontab /crontab
-ENTRYPOINT ["supercronic"]
-CMD ["/crontab"]
+
+RUN [ "cross-build-end" ]
+
+CMD ["supercronic", "/crontab"]
